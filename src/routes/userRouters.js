@@ -21,7 +21,7 @@ const admin = require("../middleaware/adminRole")
 const validate = require("../middleaware/validate")
 
 
-const  { Register , Login } = require("../middleaware/Joi")
+const  { Register , Login , Update } = require("../middleaware/Joi")
 
 
 //////////////////////////////////////////////////////////////////////////////// 
@@ -40,7 +40,7 @@ router.delete("/logout" , auth , logout)
 
 router.delete ("/:id" , auth , DeleteUser)
 
-router.patch("/update" , auth ,validateUpdate, updateUser)
+router.patch("/update" , auth ,validate(Update), updateUser)
 
 router.patch("/:id/role" , auth , admin , changeRole)
 

@@ -89,9 +89,28 @@ password : joi.string().required().trim().pattern(new RegExp(("^(?=.*[a-z])(?=.*
 
 
 
+const Update = joi.object({
 
-module.exports = { Register , Login }
+username : joi.string().min(3).max(35).trim().messages({
 
+"string.empty" : "Username must not be empty" ,
+
+"string.min": "Username must be at least 3 characters",
+
+}),
+
+email : joi.string().email().trim().lowercase().messages({
+
+"string.empty" : "Email must not be empty" ,
+
+"string.email": "Please enter a valid email address",
+
+}),
+
+}).min(1)
+
+
+module.exports = { Register , Login , Update }
 
 // joi بيخزن بيانات بتاعتك كدة عشان كدة كتبنا الارورر اول متغير ثم بعد كدة في الشرط ايف كتبنها بطريقة عادية اوبجكيت في اوبجكيت جواة اريية 
 
